@@ -1,0 +1,33 @@
+<div align="center">
+  <h1>
+    Back4App Live Query Demo!
+  </h1>
+  <img src="../assets/back4app.png">
+
+  <h2>Todo List </h2>
+  <button (click)="clearCompleted()">Delete finished ones</button> &nbsp; <button (click)="clearAll()">Delete all</button>
+  <br>
+  <br>
+  <input (keyup.enter)="saveTodo()" [(ngModel)]="title" placeholder="What can't you miss?"/>
+
+  <!--<ul>-->
+  <!--<li *ngFor="let todo of todos;">-->
+  <!--<label><input type="checkbox" (click)="toggleCompleted(todo)" [checked]="todo.get('completed')"/> {{todo.get('title')}}</label>-->
+  <!--</li>-->
+  <!--</ul>-->
+
+
+
+
+  <ul class="list">
+    <li class="list-item" *ngFor="let todo of todos;">
+      <input type="checkbox" class="hidden-box" [id]="todo.id" (click)="toggleCompleted(todo)" [checked]="todo.get('completed')"/>
+      <label [for]="todo.id" class="check--label">
+        <span class="check--label-box"></span>
+        <span class="check--label-text">{{todo.get('title')}}</span>
+      </label>
+    </li>
+
+  </ul>
+
+</div>
