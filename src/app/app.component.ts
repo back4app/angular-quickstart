@@ -9,84 +9,45 @@ declare const Parse: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title;
-  todos;
-  Todo;
+  email = '';
+  password = '';
+  rememberMe = false;
 
   constructor() {
     Parse.initialize(environment.PARSE_APP_ID, environment.PARSE_JS_KEY);
     Parse.serverURL = environment.serverURL;
-    Parse.liveQueryServerURL = environment.liveQueryServerURL;
-
-    const client = new Parse.LiveQueryClient({
-        applicationId: environment.PARSE_APP_ID,
-        serverURL: environment.liveQueryServerURL, // Example: 'wss://livequerytutorial.back4app.io'
-        javascriptKey: environment.PARSE_JS_KEY
-    });
-    client.open();
-    this.Todo = Parse.Object.extend('Todo');
-    const query = new Parse.Query(this.Todo);
-    query.ascending('createdAt').limit(5).find().then(todos => {
-      this.todos = new Set(todos);
-    }).catch(error => {
-      alert('Failed to retrieving objects, with error code: ' + error.message);
-    });
-
-    const subscription = client.subscribe(query);
-    subscription.on('create', todo => {
-      this.todos.add(todo);
-      console.log('On create event');
-    });
-    subscription.on('delete', todo => {
-      this.todos.forEach(t => {
-        if (t.id === todo.id) {
-          console.log('On delete event');
-          this.todos.delete(t);
-        }
-      });
-    });
   }
-
-  toggleCompleted = todo => {
-    todo.set('completed', !todo.get('completed'));
-    todo.save();
-  }
-
-  saveTodo = () => {
-    if (this.title) {
-      const todo = new this.Todo();
-      todo.set('title', this.title);
-      todo.save();
-    }
-    this.title = null;
-  }
-
-  clearCompleted = () => {
-    this.todos.forEach(t => {
-      if (t.get('completed')) {
-        t.destroy();
-      }
-    });
-  }
-
-  clearAll = () => {
-    this.todos.forEach(t => t.destroy());
-  };
 
   handleSubmit = () => {
-    console.log("On the handleSubmit function")
+    alert("email = " + this.email + ", password = " + this.password + ' and rememberMe = ' + this.rememberMe);
+
+    const user = new Parse.User();
+    user.set("username", this.email);
+    user.set("email", this.email);
+    user.set("password", this.password);
+    user.set("rememberMe", this.rememberMe);
+
+    user.signUp(null).then(
+        function(user) {
+            alert('User created successfully with email: ' + user.get("email"));
+        },
+
+        function(error) {
+            alert("Error " + error.code + ": " + error.message);
+        }
+    );
   };
 
-  handleUsernameChange = () => {
-      console.log("On the handleUsernameChange function")
+  handleUsernameChange = (event: KeyboardEvent) => {
+      this.email = (<HTMLInputElement>event.target).value;
   };
 
-  handlePasswordChange = () => {
-      console.log("On the handlePasswordChange function")
+  handlePasswordChange = (event: KeyboardEvent) => {
+      this.password = (<HTMLInputElement>event.target).value;
   };
 
   handleRememberMeClick = () => {
-      console.log("On the handleRememberMeChange function")
+      this.rememberMe = !this.rememberMe;
   };
 }
 

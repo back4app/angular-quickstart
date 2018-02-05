@@ -7,9 +7,9 @@
     <form class="form-signup" (submit)="handleSubmit()">
       <h2 class="form-signup-heading">Please sign up</h2>
       <input type="text" class="form-control" placeholder="Email address" required
-             autoFocus (change)="handleUsernameChange()"/>
+             autoFocus (change)="handleUsernameChange($event)"/>
       <input type="password" class="form-control" placeholder="Password" required
-             (change)="handlePasswordChange()"/>
+             (change)="handlePasswordChange($event)"/>
       <label class="checkbox">
         <input type="checkbox" value="remember-me" (change)="handleRememberMeClick()"/>
         &nbsp; Remember me

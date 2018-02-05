@@ -5,8 +5,7 @@
 
 export const environment = {
   production: false,
-  PARSE_APP_ID: 'FBtpcoBSGvnVFU6Dg0PVUEYfCTRbDVHFqQ9wJ9UB',
-  PARSE_JS_KEY: 'cjbOdCf8YH69rSfS55MKlvYV0Ho87oiwCfbpSygy',
-  serverURL: 'https://parseapi.back4app.com',
-  liveQueryServerURL: 'ws://todomvc.back4app.io'
+  PARSE_APP_ID: 'Zr4rLoGn4SNPJGajcGDNgag4wNXBv3MI2f1KAnJJ',
+  PARSE_JS_KEY: 'NW51Qw4RtrH50b3Qx4saSKq69ur3Z0WlICoZKGCR',
+  serverURL: 'https://parseapi.back4app.com'
 };
