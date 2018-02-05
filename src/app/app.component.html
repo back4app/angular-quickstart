@@ -1,33 +1,20 @@
-<div align="center">
-  <h1>
-    Back4App Live Query Demo!
+<div>
+  <h1 align="center">
+    Back4App Angular Quickstart!
   </h1>
-  <img src="../assets/back4app.png">
 
-  <h2>Todo List </h2>
-  <button (click)="clearCompleted()">Delete finished ones</button> &nbsp; <button (click)="clearAll()">Delete all</button>
-  <br>
-  <br>
-  <input (keyup.enter)="saveTodo()" [(ngModel)]="title" placeholder="What can't you miss?"/>
-
-  <!--<ul>-->
-  <!--<li *ngFor="let todo of todos;">-->
-  <!--<label><input type="checkbox" (click)="toggleCompleted(todo)" [checked]="todo.get('completed')"/> {{todo.get('title')}}</label>-->
-  <!--</li>-->
-  <!--</ul>-->
-
-
-
-
-  <ul class="list">
-    <li class="list-item" *ngFor="let todo of todos;">
-      <input type="checkbox" class="hidden-box" [id]="todo.id" (click)="toggleCompleted(todo)" [checked]="todo.get('completed')"/>
-      <label [for]="todo.id" class="check--label">
-        <span class="check--label-box"></span>
-        <span class="check--label-text">{{todo.get('title')}}</span>
+  <div class="container">
+    <form class="form-signup">
+      <h2 class="form-signup-heading">Please sign up</h2>
+      <input type="text" class="form-control" placeholder="Email address" required
+             autoFocus/>
+      <input type="password" class="form-control" placeholder="Password" required/>
+      <label class="checkbox">
+        <input type="checkbox" value="remember-me"/>
+        &nbsp; Remember me
       </label>
-    </li>
-
-  </ul>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+  </div>
 
 </div>
