@@ -71,6 +71,22 @@ export class AppComponent {
 
   clearAll = () => {
     this.todos.forEach(t => t.destroy());
-  }
+  };
+
+  handleSubmit = () => {
+    console.log("On the handleSubmit function")
+  };
+
+  handleUsernameChange = () => {
+      console.log("On the handleUsernameChange function")
+  };
+
+  handlePasswordChange = () => {
+      console.log("On the handlePasswordChange function")
+  };
+
+  handleRememberMeClick = () => {
+      console.log("On the handleRememberMeChange function")
+  };
 }
 

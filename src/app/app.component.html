@@ -4,13 +4,14 @@
   </h1>
 
   <div class="container">
-    <form class="form-signup">
+    <form class="form-signup" (submit)="handleSubmit()">
       <h2 class="form-signup-heading">Please sign up</h2>
       <input type="text" class="form-control" placeholder="Email address" required
-             autoFocus/>
-      <input type="password" class="form-control" placeholder="Password" required/>
+             autoFocus (change)="handleUsernameChange()"/>
+      <input type="password" class="form-control" placeholder="Password" required
+             (change)="handlePasswordChange()"/>
       <label class="checkbox">
-        <input type="checkbox" value="remember-me"/>
+        <input type="checkbox" value="remember-me" (change)="handleRememberMeClick()"/>
         &nbsp; Remember me
       </label>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
