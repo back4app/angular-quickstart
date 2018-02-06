@@ -19,8 +19,6 @@ export class AppComponent {
   }
 
   handleSubmit = () => {
-    alert("email = " + this.email + ", password = " + this.password + ' and rememberMe = ' + this.rememberMe);
-
     const user = new Parse.User();
     user.set("username", this.email);
     user.set("email", this.email);

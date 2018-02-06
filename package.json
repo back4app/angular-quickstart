@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build; cd dist; aws s3 cp . s3://angular-quickstart.back4app.com --recursive; cd .."
   },
   "private": true,
   "dependencies": {
